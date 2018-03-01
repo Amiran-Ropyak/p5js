@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+
+    <script>
+        function setup() {
+            createCanvas(800, 600);
+            background(150);
+
+            //neck
+            strokeWeight(1);
+            fill(255, 216, 151);
+            rect(240, 200, 20, 30);
+
+            //head
+            fill(255, 216, 151);
+            ellipse(250, 150, 100, 120); //face
+
+            fill(220);
+            arc(250, 140, 110, 110, PI, 0); //hair
+
+            //facial features
+            fill(0);
+            strokeWeight(10);
+            line(230, 150, 240, 150);
+            line(260, 150, 270, 150);
+
+            //Eyes Color
+            stroke(110, 110, 255)
+            point(240, 165);
+            point(270, 165);
+            stroke(0)
+
+            //mouth
+            strokeWeight(7);
+            line(240, 195, 255, 195);
+
+            //nose
+            strokeWeight(5);
+            point(255, 175);
+
+            //UpTorso
+            strokeWeight(1);
+            fill(120, 0, 0);
+            rect(180, 220, 150, 210);
+            fill(255, 216, 151);
+            rect(225, 220, 55, 180);
+            fill(120, 0, 0);
+
+            //Belt
+            fill(0)
+            strokeWeight(10)
+            line(185, 400, 325, 400)
+
+            //color and stroke reset
+            fill(120, 0, 0)
+            strokeWeight(1)
+
+            //LowTorso
+            quad(180, 430, 240, 430, 200, 600, 150, 600); //Left Leg TL TR BR BL
+            quad(330, 430, 270, 430, 310, 600, 360, 600); //Right Leg TR TL BL BR
+
+            //Arms
+            quad(180, 220, 180, 280, 110, 350, 80, 320); //Left Arm TR BR BL TL
+            quad(330, 220, 330, 280, 400, 350, 430, 320); //Right Arm TL BL BR TR
+
+            //Hands
+            fill(255, 216, 151);
+            quad(110, 350, 90, 370, 60, 340, 80, 320); //Left Hand
+            quad(400, 350, 420, 370, 450, 340, 430, 320); //Right Hand
+
+            //Them-Abs
+            strokeWeight(5)
+            line(227, 325, 277, 325)
+            line(227, 350, 277, 350)
+            line(227, 375, 277, 375)
+            line(252, 325, 252, 400)
+
+            //PEX
+            line(227, 275, 277, 275)
+            line(252, 275, 252, 250)
+
+            //Sword
+            strokeWeight(1)
+            fill(100)
+            quad(400, 350, 420, 350, 420, 370, 400, 370) //Hilt TL TR BR BL
+            quad(410, 350, 420, 360, 445, 335, 435, 325) //Handle
+            quad(425, 315, 455, 345, 460, 340, 430, 310) //Handguard
+            fill(175)
+            quad(440, 320, 550, 210, 560, 220, 450, 330) //Blade
+            quad(550, 210, 560, 220, 563, 205) //Blade Tip
+
+            //Textbox
+            fill(255, 0, 0)
+            textSize(50)
+            text("En Garde", 325, 150)
+
+
+        }
+
+        function draw() {
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/Amiran-Ropyak/p5js/blob/master/zoog.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+</html>
