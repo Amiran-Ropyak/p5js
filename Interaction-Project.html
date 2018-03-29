@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+
+    <script>
+        //These are all of my variables
+        var birdY;
+        var pipeX;
+        var red;
+        var green;
+        var blue;
+        var pipeX2;
+        var pipeX3;
+        var pipeX4;
+        var pipeY;
+        var pipeY2;
+        var pipeY3;
+        var pipeY4;
+        var pipeY5;
+        var pipeY6;
+        var pipeY7;
+        var pipeY8
+        var wallX;
+        var wallX2;
+        var wallX3;
+        
+        //These are the initial values for all of my variables
+        birdY = 100;
+        pipeX = 800;
+        pipeX2 = 1300;
+        pipeX3 = 1800;
+        pipeX4 = 2300;
+        pipeY = -100;
+        pipeY2 = 400;
+        pipeY3 = -100;
+        pipeY4 = 400;
+        pipeY5 = -100;
+        pipeY6 = 400;
+        pipeY7 = -100;
+        pipeY8 = 400;
+        wallX = 1000;
+        wallX2 = 2000;
+        wallX3 = 3000;
+
+        function setup() {
+            createCanvas(800, 600);
+            //frameRate(3)
+        }
+
+        function draw() {
+            background(180, 225, 180); //green background
+
+            //Player Circle
+            fill(140);
+            ellipse(mouseX, mouseY, 20, 20);
+
+            fill(255); //Color reset
+            
+            //Bird Circle
+            fill(red, green, blue);
+            ellipse(100, birdY, 70, 70);
+
+            //The 4 sets of colored pipes in the game
+            fill(150, 111, 72);
+            rect(pipeX, pipeY - 100, 50, 400);
+            rect(pipeX, pipeY + 500, 50, 500);
+
+            fill(222, 179, 182);
+            rect(pipeX2, pipeY3 - 100, 50, 400);
+            rect(pipeX2, pipeY3 + 500, 50, 500);
+
+            fill(165, 25, 199);
+            rect(pipeX3, pipeY5 - 100, 50, 400);
+            rect(pipeX3, pipeY5 + 500, 50, 500);
+
+            fill(56, 189, 143);
+            rect(pipeX4, pipeY7 - 100, 50, 400);
+            rect(pipeX4, pipeY7 + 500, 50, 500);
+
+            //The 3 walls that you must align colors with to pass
+            fill(255, 0, 0);
+            rect(wallX, 0, 50, 800);
+
+            fill(0, 255, 0);
+            rect(wallX2, 0, 50, 800);
+
+            fill(0, 0, 255);
+            rect(wallX3, 0, 50, 800);
+
+            //statemets that cause the pipes to reset back to position when they hit x = 0
+            if (pipeX == 0) {
+                pipeX = pipeX + 2000; //Left and Right Reset (applies to all 4 if statements)
+                pipeY = random(-300, 100); //Up and down randomizer (applies to all 4 if statements)
+            }
+
+            if (pipeX2 == 0) {
+                pipeX2 = pipeX2 + 2000;
+                pipeY3 = random(-300, 100);
+            }
+
+            if (pipeX3 == 0) {
+                pipeX3 = pipeX3 + 2000;
+                pipeY5 = random(-300, 100);
+            }
+
+            if (pipeX4 == 0) {
+                pipeX4 = pipeX4 + 2000;
+                pipeY7 = random(-300, 100);
+            }
+
+            //statements that cause the walls to reset back to position when they hit X = 0
+            if (wallX < 0) {
+                wallX = wallX + 3000;
+            }
+
+            if (wallX2 < 0) {
+                wallX2 = wallX2 + 3000;
+            }
+
+            if (wallX3 < 0) {
+                wallX3 = wallX3 + 3000;
+            }
+
+            //statements that cause the "bird" to stay on screen instead of proceed downward or upward
+            if (birdY > 600) {
+                birdY = birdY - 600; //prevents going down
+            }
+
+            if (birdY < 0) {
+                birdY = birdY + 600; //prevents going up
+            }
+
+            //movement on all objects on screen
+            birdY += 5; //bird goes down 5 pixels per frame
+            
+            //all pipes move 10 pixels left per frame
+            pipeX -= 10;
+            pipeX2 -= 10;
+            pipeX3 -= 10;
+            pipeX4 -= 10;
+            
+            //all walls move 15 pixels left per frame
+            wallX -= 15;
+            wallX2 -= 15;
+            wallX3 -= 15;
+
+            //debug utility
+            console.log(pipeX);
+            console.log(pipeX2);
+            console.log(pipeX3);
+            console.log(pipeX4);
+        }
+
+        function mousePressed() {
+            birdY -= 100; //using the mouse click will make the bird go up 100 pixels instantly
+        }
+
+        function keyPressed() {
+            
+            //pressing "A" will change "bird" color to "red"
+            if (keyCode == 65) {
+                red = 255;
+                green = 0;
+                blue = 0;
+            }
+
+            //pressing "S" will change "bird" color to "green"
+            if (keyCode == 83) {
+                red = 0;
+                green = 255;
+                blue = 0;
+            }
+
+            //pressing "D" will change "bird" color to "blue"
+            if (keyCode == 68) {
+                red = 0;
+                green = 0;
+                blue = 255;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/Amiran-Ropyak/p5js/blob/master/Interaction-Project.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
