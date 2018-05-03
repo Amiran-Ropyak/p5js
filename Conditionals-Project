@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+
+    <script>
+        var head;
+        var squareX;
+        var squareY;
+        var snakeX = 400;
+        var snakeY = 300;
+        var score = 0;
+        var xSpeed = 5;
+        var ySpeed = 5;
+        var pow1 = 0;
+        var value = false;
+
+
+        function setup() {
+            createCanvas(800, 600);
+
+            frameRate(120)
+
+            //setting the location of the square to be random
+            squareX = random(25, 700)
+            squareY = random(25, 500)
+            textSize(25)
+            text("Please press W or A or S or D to START", 170, 200)
+            text("The SNAKE will move faster the more it eats", 160, 230)
+            text("Every 5 points you get a powerup, use 'b' to activate", 110, 260)
+
+            console.log(pow1 % 5 == 0)
+
+        }
+
+        function draw() {
+            console.log(value)
+            //background(255)
+            //snakeX = constrain(snakeX,15,785)
+            //snakeY = constrain(snakeY,15,585)
+            textSize(25)
+            fill(0)
+            text("score:", 25, 25)
+            text(score, 50, 50)
+            text("power:", 25, 75)
+            text(pow1, 50, 100)
+
+            //create a square that will act as food for the snake
+            fill(180)
+
+            //point square
+            fill(random(255), random(255), random(255))
+            rect(squareX, squareY, 25, 25)
+
+            //the circle
+            fill(220)
+            ellipse(snakeX, snakeY, 15, 15)
+
+            //if the snake eats the square, the square is going to reappear elsewhere and add 1 score to the player
+            if (snakeX > squareX && snakeX < squareX + 25 && snakeY > squareY && snakeY < squareY + 25) {
+                squareX = random(25, 700)
+                squareY = random(25, 500)
+                score++
+                background(random(255), random(255), random(255))
+                ySpeed += .5
+                xSpeed += .5
+
+                if (score % 5 == 0) {
+                    pow1++
+                }
+            }
+
+            //if the keys w,a,s,d are pressed, the snake will respond accordingly, move up down left or right
+            if (keyCode == 87) {
+                snakeY -= ySpeed
+            }
+            else if (keyCode == 83) {
+                snakeY += ySpeed
+            }
+            else if (keyCode == 65) {
+                snakeX -= xSpeed
+            }
+            else if (keyCode == 68) {
+                snakeX += xSpeed
+            }
+            else {}
+            
+            //If the snake passes the borders of the canvas, the game will end
+            if (snakeX < 0 || snakeX > 800 || snakeY < 0 || snakeY > 600) {
+                noLoop()
+                textSize(25)
+                fill(255, 0, 0)
+                text("You have failed, and the world has been destroyed!!!", 200, 400)
+            }
+            
+            
+            //WINNER CODE BELOW
+            //WINNER CODE BELOW
+            //WINNER CODE BELOW
+            //WINNER CODE BELOW
+            //WINNER CODE BELOW
+            
+            
+            //To win, you must have a score of 100. This will provide link and stop the game
+            if(score == 100){
+                background(200,200,0)
+                fill(255,0,0)
+                text("You have saved the World",250,200)
+                text("Here is your prize, you can copy it from the code below",125,300)
+                
+                //USE THIS LINK IF U WON
+                text("https://www.youtube.com/watch?v=KRGdwwpxYeI",175,400)
+                
+                
+                noLoop()
+            }
+        }
+
+        //This is going take 1 power and slow the players ball down
+        function keyPressed() {
+            if (!value && pow1 >= 1 && keyCode == 66) {
+                pow1--
+                xSpeed -= 2
+                ySpeed -= 2
+            }
+            value = true
+        }
+        
+        //Resets the value of the variable so that power is not all used up
+        function keyReleased() {
+            value = false
+        }
+
+        
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/Amiran-Ropyak/p5js/blob/master/Conditionals-Project.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
