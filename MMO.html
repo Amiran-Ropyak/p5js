@@ -12,9 +12,6 @@
 
 
     <script>
-        //Does not want to run '<script language><endscript>'
-        //Does not want to run 'loadSound' because loadSound() is not defined
-        //mySound.play() cant work because sound is not loaded.
 
         var shipx;
         var shipy;
@@ -527,7 +524,17 @@
 </head>
 
 <body>
+<form><input TYPE="button" onClick="history.go(0)" value="Reset"></form>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/Amiran-Ropyak/p5js/blob/master/MMO.html?footer=0"></script>
+    </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
 </body>
 
 </html>
